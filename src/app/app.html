@@ -1,0 +1,127 @@
+<h1>Layout with <code>@angular/flex-layout</code></h1>
+<p><a href="https://neverfriday.com/">Rudolf Olah</a></p>
+<h2><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Flex Layout</a></h2>
+<p>Uses the following directives:</p>
+<ul class="directives-used">
+    <li>fxLayout</li>
+    <li>fxLayoutGap</li>
+    <li>fxFlex</li>
+</ul>
+<form class="with-angular-flex">
+    <div fxLayout="column" fxLayoutGap="5%">
+        <div fxFlex="50%" fxLayout="row" class="invoice-address">
+            <div fxFlex="50%" class="label">Billed To</div>
+            <div fxFlex="50%" class="value">
+                <ng-template ngFor let-row [ngForOf]="billingAddress">
+                    <div>{{row}}</div>
+                </ng-template>
+            </div>
+        </div>
+        <div fxLayout="column">
+            <div fxLayout="row" class="invoice-header">
+                <div fxFlex="40%">Description</div>
+                <div fxFlex="20%">Unit Cost</div>
+                <div fxFlex="20%">Qty./Hr. Rate</div>
+                <div fxFlex="20%">Amount</div>
+            </div>
+            <div fxLayout="row wrap" class="invoice-rows">
+                <ng-template ngFor let-item [ngForOf]="lineItems">
+                    <div fxFlex="40%" class="description">
+                        {{item.description}}
+                    </div>
+                    <div fxFlex="20%" class="unit-cost">
+                        {{item.unitCost ? item.unitCost : ''}}
+                    </div>
+                    <div fxFlex="20%" class="quantity-hourly-rate">
+                        <ng-template [ngIf]="item.quantity" [ngIfThen]="quantity" [ngIfElse]="hourlyRate">
+                        </ng-template>
+                        <ng-template #quantity>{{item.quantity}}</ng-template>
+                        <ng-template #hourlyRate>{{item.hourlyRate|currency}}</ng-template>
+                    </div>
+                    <div fxFlex="20%" class="amount">
+                        {{item.amount|currency}}
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+        <div fxLayout="row" class="invoice-total">
+            <div fxFlex="70%" class="label">
+                Total
+            </div>
+            <div fxFlex="30%" class="value">
+                {{invoiceTotal|currency}}
+            </div>
+        </div>
+    </div>
+</form>
+<h2><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">Grid
+        Layout</a></h2>
+<p>Uses the following directives:</p>
+<ul class="directives-used">
+    <li>gdColumns</li>
+    <li>gdRows</li>
+    <li>gdGap</li>
+    <li>gdColumn</li>
+    <li>gdRow</li>
+</ul>
+<form class="with-angular-grid">
+    <div gdGap="5%" gdColumns="1fr" gdRows="1fr 1fr">
+        <div gdColumn="1" gdRow="1" class="invoice-address" gdColumns="50% 50%" gdRows="1fr">
+            <div class="label">Billed To</div>
+            <div class="value">
+                <ng-template ngFor let-row [ngForOf]="billingAddress">
+                    <div>{{row}}</div>
+                </ng-template>
+            </div>
+        </div>
+        <div gdColumn="1" gdRow="2"></div>
+    </div>
+</form>
+<h2>Using flex layout <em>without using angular-flex-layout</em></h2>
+<form class="without-angular">
+    <div fxLayout="column" fxLayoutGap="5%">
+        <div class="invoice-address">
+            <div class="label">Billed To</div>
+            <div class="value">
+                <ng-template ngFor let-row [ngForOf]="billingAddress">
+                    <div>{{row}}</div>
+                </ng-template>
+            </div>
+        </div>
+        <div fxLayout="column">
+            <div fxLayout="row" class="invoice-header">
+                <div fxFlex="40%">Description</div>
+                <div fxFlex="20%">Unit Cost</div>
+                <div fxFlex="20%">Qty./Hr. Rate</div>
+                <div fxFlex="20%">Amount</div>
+            </div>
+            <div fxLayout="row wrap" class="invoice-rows">
+                <ng-template ngFor let-item [ngForOf]="lineItems">
+                    <div fxFlex="40%" class="description">
+                        {{item.description}}
+                    </div>
+                    <div fxFlex="20%" class="unit-cost">
+                        {{item.unitCost ? item.unitCost : ''}}
+                    </div>
+                    <div fxFlex="20%" class="quantity-hourly-rate">
+                        <ng-template [ngIf]="item.quantity" [ngIfThen]="quantity" [ngIfElse]="hourlyRate">
+                        </ng-template>
+                        <ng-template #quantity>{{item.quantity}}</ng-template>
+                        <ng-template #hourlyRate>{{item.hourlyRate|currency}}</ng-template>
+                    </div>
+                    <div fxFlex="20%" class="amount">
+                        {{item.amount|currency}}
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+        <div fxLayout="row" class="invoice-total">
+            <div fxFlex="70%" class="label">
+                Total
+            </div>
+            <div fxFlex="30%" class="value">
+                {{invoiceTotal|currency}}
+            </div>
+        </div>
+    </div>
+</form>

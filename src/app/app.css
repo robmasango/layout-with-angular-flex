@@ -1,0 +1,58 @@
+.directives-used li {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+form {
+    width: 50%;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.invoice-header {
+    font-size: 16pt;
+    text-align: center;
+}
+
+.invoice-address,
+.invoice-total {
+    font-weight: bold;
+}
+
+.invoice-total {
+    padding: 1rem;
+    font-size: 13pt;
+}
+
+.invoice-header div,
+.invoice-rows div {
+    padding: 1rem;
+    border-bottom: 1px solid #333333;
+}
+
+.invoice-rows .description, .unit-cost, .quantity-hourly-rate, .amount {
+    border-right: 1px solid #333333;
+}
+
+.invoice-rows .description {
+    border-left: 1px solid #333333;
+}
+
+.invoice-address .label,
+.invoice-rows .unit-cost,
+.invoice-rows .quantity-hourly-rate,
+.invoice-rows .amount,
+.invoice-total .label,
+.invoice-total .value {
+    text-align: right;
+    padding-right: 0.5rem;
+}
+
+/** WITHOUT ANGULAR */
+.without-angular .invoice-address {
+    flex: 50%;
+    flex-direction: row;
+}
+
+.without-angular .invoice-address .label,
+.without-angular .invoice-address .value {
+    flex-basis: 50%;
+}
