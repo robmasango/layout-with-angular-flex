@@ -35,7 +35,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/layout-with-angular-flex-layout",
+            "outputPath": "docs/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -74,6 +74,15 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             }
           }
         },
@@ -85,6 +94,9 @@
           "configurations": {
             "production": {
               "browserTarget": "layout-with-angular-flex-layout:build:production"
+            },
+            "es5": {
+              "browserTarget": "app:build:es5"
             }
           }
         },
