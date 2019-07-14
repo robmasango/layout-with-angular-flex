@@ -76,6 +76,7 @@
               ]
             },
             "es5": {
+              "baseHref": "",
               "tsConfig": "./tsconfig-es5.app.json",
               "fileReplacements": [
                 {
